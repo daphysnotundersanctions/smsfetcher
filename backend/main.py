@@ -8,7 +8,7 @@ class Item(BaseModel):
 app = FastAPI()
 
 @app.get("/")
-def getCodeList():
+def getCodesList():
     return {"Hello": "World"}
 
 
