@@ -1,7 +1,7 @@
 from typing import Union
 from pydantic import BaseModel
 from fastapi import FastAPI
-from db import insert
+from db import *
 
 class Item(BaseModel):
     value : int
@@ -10,8 +10,8 @@ class Item(BaseModel):
 app = FastAPI()
 
 @app.get("/")
-def getCodesList():
-    return {"Hello": "World"}
+async def getCodesList():
+    return returnData()
 
 
 @app.post("/sendMessage/")

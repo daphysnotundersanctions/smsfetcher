@@ -22,5 +22,11 @@ def insert(arg):
                 return 404
 
 
+def returnData():
+        cursor.execute("SELECT * FROM messages;")
+        row = cursor.fetchall() 
+        return row
+
+
 cursor.execute("SELECT * FROM messages;")
 print(cursor.fetchall())
