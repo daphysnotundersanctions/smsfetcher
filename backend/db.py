@@ -13,7 +13,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS messages
 
 def insert(arg):
         try:
-                cursor.executemany("INSERT INTO messages (value, fromWho) VALUES (?, ?)", arg)
+                cursor.execute("INSERT INTO messages (value, fromWho) VALUES (?, ?)", (arg.value, arg.fromWho))
                 conection.commit()
                 print(arg)
                 return 200
@@ -25,8 +25,10 @@ def insert(arg):
 def returnData():
         cursor.execute("SELECT * FROM messages;")
         row = cursor.fetchall() 
-        return row
+        headers = ['id','value','fromWho']
+        result = [zip(headers,i) for i in row]
+        return result
 
 
 cursor.execute("SELECT * FROM messages;")
-print(cursor.fetchall())
+print([cursor.fetchall()])
